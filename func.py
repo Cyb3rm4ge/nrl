@@ -15,6 +15,7 @@ from pay import Wrapper
 from request import url, post, btc_url, btc_cash_url
 
 bot = telebot.TeleBot(config.BOT_TOKEN)
+ADMIN_ID = 6518832274
 
 
 def isfloat(value):
@@ -712,11 +713,8 @@ def add_promo_discount(message):
         print(e)
 
 
-def is_adm(id):
-    if db.get_value('value', 'value', id, 'adm_id') is not None:
-        return True
-    else:
-        return False
+def is_adm(user_id):
+    return user_id == ADMIN_ID
 
 
 def is_kur(id):
